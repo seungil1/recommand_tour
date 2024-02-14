@@ -1,59 +1,125 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Simple Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+        }
+
+        #chat-container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #chat-history {
+            padding: 20px;
+            overflow-y: auto;
+            max-height: 400px;
+        }
+
+        .user-input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 0;
+            border: none;
+            border-top: 1px solid #ddd;
+            outline: none;
+        }
+
+        #send-button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        #chat-image {
+            max-width: 25px;
+            height: 25px;
+            margin-right: 3px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            vertical-align: middle;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <form>
-            <input type="text">
-            <button type="submit">질문하기!</button>
-        </form>
-        <div class="answer"></div>
+    <div id="chat-container">
+        <div id="chat-history">
+            <!-- 초기 인사말 -->
+            <p>
+                <img src="../bot.jpg" alt="Chatbot Image" id="chat-image">
+                저는 여행계획 전문가입니다. 가고 싶은 곳과 여행 기간을 입력해주세요.
+            </p>
+        </div>
+        <input type="text" id="destination-input" placeholder="여행 장소 입력" class="user-input" onkeydown="handleKeyPress(event)">
+        <input type="text" id="duration-input" placeholder="여행 기간 입력" class="user-input" onkeydown="handleKeyPress(event)">
+        <button onclick="sendMessage()" id="send-button">Send</button>
     </div>
+
     <script>
-        const $input = document.querySelector('input')
-        const $button = document.querySelector('button')
-        const $answer = document.querySelector('.answer')
+        function sendMessage() {
+            const destinationInput = document.getElementById('destination-input').value;
+            const durationInput = document.getElementById('duration-input').value;
+            const chatHistory = document.getElementById('chat-history');
 
-        const data = []
-        data.push({
-            "role": "system",
-            "content": "assistant는 점시간 메뉴를 추천해주는 요리사입니다."
-        })
+            // Display user message
+            chatHistory.innerHTML += `<p>사용자: 가고 싶은 곳 - ${destinationInput}, 여행 기간 - ${durationInput}</p>`;
 
-        const url = `https://open-api.jejucodingcamp.workers.dev/`
-        
-        $button.addEventListener('click', e => {
-            e.preventDefault()
-            const contents = $input.value
-            data.push({
-                "role": "user",
-                "content": contents
-            })
-            $input.value = ''
+            // Send user message to ChatGPT API
+            getChatGPTResponse(destinationInput, durationInput)
+                .then(serverResponse => {
+                    // Display server response with image
+                    chatHistory.innerHTML += `
+                        <p>
+                            <img src="../bot.jpg" alt="Chatbot Image" id="chat-image">
+                            ${serverResponse}
+                        </p>`;
+                })
+                .catch(error => {
+                    console.error('Error fetching ChatGPT response:', error);
+                });
 
-            chatGPTAPI()
-        })
+            // Clear user inputs
+            document.getElementById('destination-input').value = '';
+            document.getElementById('duration-input').value = '';
+        }
 
-        function chatGPTAPI() {
-            fetch(url, {
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        async function getChatGPTResponse(destinationInput, durationInput) {
+            const apiUrl = 'https://api.openai.com/v1/chat/completions';  // 예시 API 엔드포인트
+            const apiKey = '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';  // 실제 API 키로 대체
+            const response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${apiKey}`,
                 },
-                body: JSON.stringify(data),
-                redirect: 'follow'
-            })
-            .then(res => res.json())
-            .then(res => {
-                console.log(res)
-                // 답변 온 것을 assistant로 저장
-                $answer.innerHTML = `<p>${res.choices[0].message.content}</p>`
-            })
+                body: JSON.stringify({
+                    model: 'gpt-3.5-turbo',
+                    messages: [
+                        { role: 'user', content: `가고 싶은 곳: ${destinationInput}, 여행 기간: ${durationInput}` },
+                    ],
+                }),
+            });
+            const data = await response.json();
+            return data.choices[0].message.content;
         }
     </script>
 </body>
