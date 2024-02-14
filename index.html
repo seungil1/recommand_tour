@@ -104,7 +104,7 @@
 
         async function getChatGPTResponse(destinationInput, durationInput) {
             const apiUrl = 'https://api.openai.com/v1/chat/completions';  // 예시 API 엔드포인트
-            const apiKey = process.env.REACT_APP_user_api;  // 실제 API 키로 대체
+            const apiKey = %REACT_APP_API_KEY%;  // 실제 API 키로 대체
             const response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: {
