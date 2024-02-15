@@ -1,6 +1,10 @@
 # recommand_tour
 #ChatGPT를 이용한 여행 추천 서비스
 
+## 개발환경
+
+* 개발환경: HTML, CSS, JavaScript
+  
 
 ## 목표
 
@@ -10,11 +14,14 @@
 
 * 실행후 여행장소와 여행기간 입력
 
+
+## 기능
+
 ## 개발일정
 
 ```mermaid
 sequenceDiagram
-Alice->>John: Hello John, how are you?
+User->>Website: User가 메세지 입력
 loop Healthcheck
     John->>John: Fight against hypochondria
 end
