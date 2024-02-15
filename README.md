@@ -22,8 +22,8 @@
 ```mermaid
 sequenceDiagram
 User->>Website: User가 메세지 입력
-
-    John->>John: Fight against hypochondria
+loop Healthcheck
+    
 end
 Note right of John: Rational thoughts!
 John-->>Alice: Great!
