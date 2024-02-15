@@ -19,6 +19,8 @@
 * 실행후 여행장소와 여행기간 입력
 
 
+* 실행 URL: https://seungil1.github.io/recommand_tour/
+* github repo: https://github.com/seungil1/recommand_tour
 
 
 ## 기능명세
@@ -67,5 +69,3 @@ sequenceDiagram
   end
 ```
 
-* 실행 URL: https://seungil1.github.io/recommand_tour/
-* github repo: https://github.com/seungil1/recommand_tour
