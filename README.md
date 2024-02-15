@@ -24,16 +24,11 @@ sequenceDiagram
   participant User as A
   participant 챗봇엔진 as B
   participant ChatGPT API as C
-  participant 시스템 as E
-  participant 응답 as G
 
   A ->> B: 사용자 입력
   B ->> C: 사용자 입력 전달
   C ->> C: ChatGPT API 호출
   C ->> B: API 응답 수신
-  B ->> E: 외부 시스템 연동
-  B ->> E: 데이터베이스 조회
-  B ->> G: 챗봇 응답
 ```
 
 * 실행 URL: https://seungil1.github.io/recommand_tour/
