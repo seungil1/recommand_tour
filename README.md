@@ -20,33 +20,20 @@
 
 
 ```mermaid
-graph TD
-  subgraph User
-    A[사용자 입력]
-  end
+sequenceDiagram
+  participant User as A
+  participant 챗봇엔진 as B
+  participant ChatGPT API as C
+  participant 시스템 as E
+  participant 응답 as G
 
-  subgraph 챗봇 엔진
-    B[자연어 처리]
-    C[의도 파악]
-    D[응답 생성]
-  end
-
-  subgraph 시스템
-    E[외부 시스템 연동]
-    F[데이터베이스 조회]
-  end
-
-  subgraph 응답
-    G[챗봇 응답]
-  end
-
-  A -->|사용자 입력| B
-  B -->|자연어 처리| C
-  C -->|의도 파악| D
-  D -->|응답 생성| G
-
-  C -->|외부 시스템 연동| E
-  C -->|데이터베이스 조회| F
+  A ->> B: 사용자 입력
+  B ->> C: 사용자 입력 전달
+  C ->> C: ChatGPT API 호출
+  C ->> B: API 응답 수신
+  B ->> E: 외부 시스템 연동
+  B ->> E: 데이터베이스 조회
+  B ->> G: 챗봇 응답
 ```
 
 * 실행 URL: https://seungil1.github.io/recommand_tour/
