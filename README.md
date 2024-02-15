@@ -17,12 +17,12 @@
 
 ## 기능
 
-## 개발일정
+
 
 ```mermaid
 sequenceDiagram
 User->>Website: User가 메세지 입력
-loop Healthcheck
+
     John->>John: Fight against hypochondria
 end
 Note right of John: Rational thoughts!
