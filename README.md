@@ -12,12 +12,13 @@
 
 ## 개발일정
 
+```mermaid
 graph TD;
     A-->B;
     A-->C;
     B-->D;
     C-->D;
-
+```
 
 * 실행 URL: https://seungil1.github.io/recommand_tour/
 * github repo: https://github.com/seungil1/recommand_tour
