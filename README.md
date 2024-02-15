@@ -20,15 +20,33 @@
 
 
 ```mermaid
-sequenceDiagram
-User->>Website: User가 메세지 입력
-loop Healthcheck
-    
-end
-Note right of John: Rational thoughts!
-John-->>Alice: Great!
-John->>Bob: How about you?
-Bob-->>John: Jolly good!
+graph TD
+  subgraph User
+    A[사용자 입력]
+  end
+
+  subgraph 챗봇 엔진
+    B[자연어 처리]
+    C[의도 파악]
+    D[응답 생성]
+  end
+
+  subgraph 시스템
+    E[외부 시스템 연동]
+    F[데이터베이스 조회]
+  end
+
+  subgraph 응답
+    G[챗봇 응답]
+  end
+
+  A -->|사용자 입력| B
+  B -->|자연어 처리| C
+  C -->|의도 파악| D
+  D -->|응답 생성| G
+
+  C -->|외부 시스템 연동| E
+  C -->|데이터베이스 조회| F
 ```
 
 * 실행 URL: https://seungil1.github.io/recommand_tour/
