@@ -7,7 +7,7 @@
 
 * 개발환경: HTML, CSS, JavaScript
   
-<br />
+
 ## 목표
 
 
