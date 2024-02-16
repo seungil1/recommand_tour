@@ -26,7 +26,6 @@
 ## 기능명세
 
 
-
 ```mermaid
 sequenceDiagram
   participant User as User
