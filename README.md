@@ -3,7 +3,7 @@
 * ChatGPT를 이용한 여행 추천 서비스  
 
 <h2>개발환경<h2/>
-
+<br /> 
 * 개발환경: HTML, CSS, JavaScript
 <br /> 
 <h2>목표<h2/>
@@ -12,7 +12,7 @@
 * 사용자에게 여행 장소와 기간을 입력받아 여행일정을 추천해주는 간단한 챗봇만들어보기
 
 
-## 사용방법
+<h2>사용방법<h2/>
 
  
 * 실행후 여행장소와 여행기간 입력
@@ -22,7 +22,7 @@
 * github repo: https://github.com/seungil1/recommand_tour
 
 
-## 기능명세
+<h2>기능명세<h2/>
 
 
 ```mermaid
