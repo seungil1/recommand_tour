@@ -13,7 +13,7 @@
 - 실행 URL: [https://seungil1.github.io/recommand_tour/](https://seungil1.github.io/recommand_tour/)
 - GitHub Repo: [https://github.com/seungil1/recommand_tour](https://github.com/seungil1/recommand_tour)
 
-###기능명세
+### 기능명세
 
 
 ```mermaid
