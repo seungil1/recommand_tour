@@ -65,7 +65,7 @@ sequenceDiagram
 graph TD;
     CI[GitHub CI/CD] -->|Deploys| LS[AWS Lightsail];
     A[Django Application] -->|Uses| DRF[Django REST Framework];
-    A -->|Static & Media Files| S3[AWS S3];
+    A -->|Connects to| DB[sqlite3];
     FE[Frontend] -->|Deployed on| LS;
     LS -->|Hosts| A;
     LS -->|Hosts| FE;
