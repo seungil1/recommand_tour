@@ -60,6 +60,8 @@ sequenceDiagram
   end
 ```
 
+```mermaid
+
 graph TD;
     CI[GitHub CI/CD] -->|Deploys| LS[AWS Lightsail];
     A[Django Application] -->|Uses| DRF[Django REST Framework];
@@ -76,5 +78,5 @@ graph TD;
     class A,DRF,DB framework;
     class LS,S3 aws;
     class CI ci;
-
+```
 
