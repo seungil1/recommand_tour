@@ -94,6 +94,9 @@ gantt
     section 개발 환경
     개발 환경 세팅 :set1, 2024-03-29, 2d
 
+    section DRF 학습
+    DRF 학습::des1, 2024-04-02, 2d
+
     section 앱 개발
     accounts 앱 구현 :acc1, 2024-04-01, 8d
     posts 앱 구현 :pos1, 2024-04-01, 7d
