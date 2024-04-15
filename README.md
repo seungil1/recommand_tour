@@ -98,7 +98,7 @@ gantt
     DRF 학습::des1, 2024-04-02, 2d
 
     section 앱 개발
-    accounts 앱 구현 :acc1, 2024-04-01, 8d
+    accounts 앱 구현 :acc1, 2024-04-01, 7d
     posts 앱 구현 :pos1, 2024-04-01, 7d
     comments 앱 구현 :com1, 2024-04-01, 7d
 
