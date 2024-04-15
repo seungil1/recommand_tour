@@ -60,3 +60,21 @@ sequenceDiagram
   end
 ```
 
+graph TD;
+    CI[GitHub CI/CD] -->|Deploys| LS[AWS Lightsail];
+    A[Django Application] -->|Uses| DRF[Django REST Framework];
+    A -->|Connects to| DB[SQLite3];
+    A -->|Static & Media Files| S3[AWS S3];
+    FE[Frontend] -->|Deployed on| LS;
+    LS -->|Hosts| A;
+    LS -->|Hosts| FE;
+
+    classDef framework fill:#f9f,stroke:#333,stroke-width:2px;
+    classDef aws fill:#ff9,stroke:#f66,stroke-width:2px,stroke-dasharray: 5, 5;
+    classDef ci fill:#9cf,stroke:#33f,stroke-width:2px;
+    
+    class A,DRF,DB framework;
+    class LS,S3 aws;
+    class CI ci;
+
+
